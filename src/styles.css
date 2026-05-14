@@ -1,0 +1,130 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-ide-bg: #0d1117;
+  --color-ide-surface: #161b22;
+  --color-ide-border: #30363d;
+  --color-java-orange: #f89820;
+  --color-spring-green: #238636;
+  --color-neon-blue: #58a6ff;
+  --color-text-primary: #c9d1d9;
+  --color-text-secondary: #8b949e;
+
+  --color-keyword: #ff7b72;
+  --color-string: #a5d6ff;
+  --color-function: #d2a8ff;
+  --color-comment: #8b949e;
+  --color-type: #ffa657;
+}
+
+body {
+  @apply bg-ide-bg text-text-primary font-sans antialiased overflow-hidden m-0 h-screen w-screen transition-colors duration-500;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.light-mode {
+  --color-ide-bg: #f0f4f8;
+  --color-ide-surface: #ffffff;
+  --color-ide-border: #d1d5db;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-java-orange: #d97706;
+  --color-spring-green: #15803d;
+  --color-neon-blue: #2563eb;
+  --color-keyword: #b91c1c;
+  --color-string: #0369a1;
+  --color-function: #7e22ce;
+  --color-comment: #6b7280;
+  --color-type: #c2410c;
+}
+
+body.light-mode .text-white {
+  color: #111827 !important;
+}
+
+body.light-mode .text-ide-bg {
+  color: #ffffff !important;
+}
+
+body.light-mode .text-yellow-200 {
+  color: #b45309 !important;
+}
+
+body.light-mode .text-red-400 {
+  color: #dc2626 !important;
+}
+
+body.light-mode .hover\:text-white:hover,
+body.light-mode .active\:text-white:active,
+body.light-mode .group:hover .group-hover\:text-white,
+body.light-mode .group:active .group-active\:text-white {
+  color: #111827 !important;
+}
+
+body.light-mode .bg-\[\#0d1117\] {
+  background-color: #e2e8f0 !important;
+}
+
+body.light-mode .bg-\[\#161b22\] {
+  background-color: #f1f5f9 !important;
+}
+
+::selection {
+  @apply bg-java-orange/30 text-white;
+}
+
+/* Custom scrollbar for terminal feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ide-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ide-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Syntax Highlighting Utilities */
+.syntax-keyword {
+  @apply text-keyword;
+}
+.syntax-string {
+  @apply text-string;
+}
+.syntax-func {
+  @apply text-function;
+}
+.syntax-comment {
+  @apply text-comment;
+}
+.syntax-type {
+  @apply text-type;
+}
+
+section {
+  @apply scroll-mt-10;
+}
