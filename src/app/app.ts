@@ -45,7 +45,7 @@ export interface TerminalLine {
     >
       <!-- Top Header -->
       <header
-        class="h-10 border-b border-ide-border flex items-center justify-between px-4 bg-ide-surface shrink-0 z-50"
+        class="sticky top-0 h-10 border-b border-ide-border flex items-center justify-between px-4 bg-ide-surface shrink-0 z-50"
       >
         <div class="flex items-center gap-2">
           <div class="w-3 h-3 rounded-full bg-red-500"></div>
@@ -216,10 +216,11 @@ export interface TerminalLine {
         >
           <!-- Editor Tabs -->
           <div
-            class="h-9 border-b border-ide-border flex bg-ide-surface shrink-0 overflow-x-auto no-scrollbar z-30"
+            class="sticky h-9 border-b border-ide-border flex bg-ide-surface shrink-0 overflow-x-auto no-scrollbar z-40"
           >
             <div
-              class="px-4 flex items-center text-xs font-mono border-t-2 border-t-java-orange bg-ide-bg border-r border-ide-border whitespace-nowrap"
+              class="px-4 flex items-center text-xs font-mono border-t-2 border-t-java-orange bg-ide-bg border-r border-ide-border whitespace-nowrap cursor-pointer select-none"
+              (click)="scrollToTop()"
             >
               Portfolio.java
               <span class="ml-2 text-[8px] cursor-pointer hover:text-white active:text-white"
@@ -243,6 +244,7 @@ export interface TerminalLine {
 
           <!-- Scrollable Application Content -->
           <div
+            #appScrollContainer
             class="flex-1 overflow-y-auto overflow-x-hidden relative scroll-smooth custom-scrollbar pb-16"
           >
             <!-- IDE Background Watermark -->
@@ -270,7 +272,7 @@ export interface TerminalLine {
 
       <!-- Footer Terminal Area -->
       <footer
-        class="border-t border-ide-border bg-ide-bg flex flex-col font-mono text-[11px] shrink-0 z-50 transition-all duration-300"
+        class="sticky bottom-0 border-t border-ide-border bg-ide-bg flex flex-col font-mono text-[11px] shrink-0 z-50 transition-all duration-300"
         [class.h-8]="!isTerminalOpen()"
         [class.h-64]="isTerminalOpen()"
       >
@@ -435,6 +437,7 @@ export class App implements AfterViewChecked, OnInit, OnDestroy {
 
   @ViewChild("terminalBody") terminalBody!: ElementRef;
   @ViewChild("terminalInput") terminalInput!: ElementRef;
+  @ViewChild("appScrollContainer") appScrollContainer!: ElementRef;
 
   history = signal<TerminalLine[]>([]);
 
@@ -603,6 +606,17 @@ export class App implements AfterViewChecked, OnInit, OnDestroy {
       if (this.terminalBody) {
         this.terminalBody.nativeElement.scrollTop =
           this.terminalBody.nativeElement.scrollHeight;
+      }
+    } catch (err) {}
+  }
+
+  scrollToTop() {
+    try {
+      const container = this.appScrollContainer?.nativeElement;
+      if (container) {
+        container.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } catch (err) {}
   }

@@ -126,5 +126,5 @@ body.light-mode .bg-\[\#161b22\] {
 }
 
 section {
-  @apply scroll-mt-10;
+  scroll-margin-top: 5rem;
 }
