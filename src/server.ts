@@ -9,7 +9,9 @@ import {join} from 'node:path';
 
 import nodemailer from 'nodemailer';
 
-const browserDistFolder = join(import.meta.dirname, '../browser');
+const browserDistFolder =
+  process.env['BROWSER_DIST_FOLDER'] ||
+  join(process.cwd(), 'dist', 'app', 'browser');
 
 const app = express();
 app.use(express.json());
@@ -211,3 +213,5 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
  */
 export const reqHandler = createNodeRequestHandler(app);
+
+export default reqHandler;
