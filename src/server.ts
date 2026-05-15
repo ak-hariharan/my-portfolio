@@ -6,8 +6,15 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import {join} from 'node:path';
+import {existsSync} from 'node:fs';
 
+import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+
+dotenv.config();
+if ((!process.env['SMTP_USER'] || !process.env['SMTP_PASS']) && existsSync('.env.example')) {
+  dotenv.config({ path: '.env.example' });
+}
 
 const browserDistFolder =
   process.env['BROWSER_DIST_FOLDER'] ||
