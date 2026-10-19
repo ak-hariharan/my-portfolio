@@ -127,7 +127,7 @@ export class ProjectsComponent {
         'Microservice topology graph',
         'Impact scoring'
       ],
-      tech: ['Angular', 'Node.js', 'Express', 'TypeScript', 'Tailwind CSS'],
+      tech: ['Angular', 'Node.js', 'Express', 'TypeScript', 'Tailwind CSS', 'MongoDB'],
       accentClass: 'bg-java-orange',
       textAccentClass: 'text-java-orange',
       url: null
