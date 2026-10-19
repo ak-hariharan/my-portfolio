@@ -119,18 +119,17 @@ export class ProjectsComponent {
       url: 'https://github.com/ak-hariharan/Prediction-of-Brain-tumor-using-Deep-learning-techniques'
     },
     {
-      title: 'Crossword TNPSC',
-      type: 'AI based crossword solver (Under Development)',
-      description: 'A TNPSC crossword assistant using AI to suggest answers and speed up solving. Active development is focused on smarter clue parsing and faster results.',
+      title: 'JavaCompass',
+      type: 'Enterprise Java Code Analyzer (Under Development)',
+      description: 'A software intelligence platform for legacy and modern Java apps. Parses and visualizes enterprise codebases (Spring Boot, Quarkus, Kafka, JPA). Helps architects extract APIs, measure technical debt, and get AI-driven refactoring guidance.',
       highlights: [
-        'AI-powered clue interpretation',
-        'Crossword answer suggestion engine',
-        'Exam preparation focused UX',
-        'Under active development'
+        'AST parsing',
+        'Microservice topology graph',
+        'Impact scoring'
       ],
-      tech: ['Angular', 'AI/ML', 'Natural Language Processing', 'Responsive Design'],
-      accentClass: 'bg-ide-border',
-      textAccentClass: 'text-text-primary',
+      tech: ['Angular', 'Node.js', 'Express', 'TypeScript', 'Tailwind CSS'],
+      accentClass: 'bg-java-orange',
+      textAccentClass: 'text-java-orange',
       url: null
     }
   ];
